@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Record for authentication</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			background-color: #f8f8f8;
+			text-align: center;
+		}
+		h1 {
+			color: #333;
+			margin-top: 50px;
+		}
+		p {
+			color: #555;
+			font-size: 18px;
+			margin-top: 20px;
+		}
+		button {
+			background-color: #574caf;
+			color: white;
+			border: none;
+			padding: 10px 20px;
+			font-size: 16px;
+			margin-top: 20px;
+			cursor: pointer;
+			border-radius: 5px;
+			box-shadow: 2px 2px 3px #999;
+		}
+		button:hover {
+			background-color: #8e3e5e;
+		}
+		.stop-button {
+			background-color: #8836f4;
+		}
+		.stop-button:hover {
+			background-color: #2fd3af;
+		}
+	   
+		#popup {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            border: 1px solid black;
+            padding: 20px;
+            display: none;
+       }
+
+        #popup.show {
+           display: block;
+          }
+
+
+	</style>
+<div id="popup"></div>
+
+</head>
+<body>
+	<h1> Start recording when we want to start</h1>
+	<p>Record voice for authentication of candidate</p>
+	<button id="start"class="start">Start recording</button>
+	<button id="stop"class="stop">Stop recording</button><br>
+	
+	<form action="/submit" method="post">
+	</br><button id="submit">Submit</button>
+	</form>
+	<form action="/compare" method="post">
+	<button id="compare">Compare</button>
+	</form>
+    <script>
+   
+	 const start = document.getElementById('start');
+     const status = document.getElementById('status');
+
+        document.getElementById('start').addEventListener('click', function() { fetch('/start')})
+        document.getElementById('stop').addEventListener('click', function() { fetch('/stop')})
+        document.getElementById('submit').addEventListener('click', function() { fetch('/submit')})
+		document.getElementById('compare').addEventListener('click', function() {
+        // Fetch the prediction value from somewhere and store it in the 'prediction' variable
+        const prediction = 0.9;
+         fetch('/compare?prediction=' + prediction);
+        });
+		
+
+
+
+
+    </script>
+
+</body>
+</html>

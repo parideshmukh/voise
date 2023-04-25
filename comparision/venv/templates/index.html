@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Record your skill</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			background-color: #f8f8f8;
+			text-align: center;
+		}
+		h1 {
+			color: #333;
+			margin-top: 50px;
+		}
+		p {
+			color: #555;
+			font-size: 18px;
+			margin-top: 20px;
+		}
+		button {
+			background-color: #4CAF50;
+			color: white;
+			border: none;
+			padding: 10px 20px;
+			font-size: 16px;
+			margin-top: 20px;
+			cursor: pointer;
+			border-radius: 5px;
+			box-shadow: 2px 2px 3px #999;
+		}
+		button:hover {
+			background-color: #593e8e;
+		}
+		button:active {
+        background-color: red;
+		}
+		
+		.stop-button {
+			background-color: #f44336;
+		}
+		.stop-button:hover {
+			background-color: #2fd3af;
+		}
+		
+        
+
+        .play-button:hover {
+        background-color: #00a3cc;
+        }
+
+
+	</style>
+</head>
+<body>
+	<h1>Please start recording</h1>
+	
+
+	
+    <p>Record your skill </p>
+	<button id="startskill"class="start-button">Start skill recording</button>
+	<button id="stopskill"class="stop-button">Stop skill recording</button><br>
+	<button id="playskill"class="play-button">play skill recording</button></br>
+    </br><p>Record your exprience </p></br>
+	<button id="startexprience"class="start-button">Start exprience recording</button>
+ 	<button id="stopexprience"class="stop-button">Stop exprience recording</button><br>
+	<button id="playexprience"class="play-button">play exprience recording</button></br>
+	
+	<form action="/submit" method="post">
+	
+    </br><button id="submit">Submit</button>
+    </form>
+    <script>
+    
+	const startButton = document.getElementById('start');
+	
+	
+    const status = document.getElementById('status');
+
+	    
+        document.getElementById('startskill').addEventListener('click', function() { fetch('/startskill')})
+        document.getElementById('stopskill').addEventListener('click', function() { fetch('/stopskill')})
+		document.getElementById('playskill').addEventListener('click', function() { fetch('/playskill')})
+		document.getElementById('startexprience').addEventListener('click', function() { fetch('/startexprience')})
+        document.getElementById('stopexprience').addEventListener('click', function() { fetch('/stopexprience')})
+		document.getElementById('playexprience').addEventListener('click', function() { fetch('/playexprience')})
+        document.getElementById('submit').addEventListener('click', function() { fetch('/submit')})
+    </script>
+
+</body>
+</html>
